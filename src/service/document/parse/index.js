@@ -9,5 +9,5 @@ module.exports = {
   parseOdt,
   parsePdf,
   parseTxt,
-  parseDocx
+  parseDocx,
 };

@@ -1,6 +1,6 @@
-const odt2html = require('odt2html');
+const odt2html = require("odt2html");
 const { removeCitations, removeHyperlinks } = require("./clean");
-const { extractSectionsAndContent } = require('./html');
+const { extractSectionsAndContent } = require("./html");
 const { error } = require("../../logger.js");
 
 async function parseOdt(odtFilePath) {

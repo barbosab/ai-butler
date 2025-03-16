@@ -1,25 +1,25 @@
 const path = require("path");
-const os = require("os"); 
+const os = require("os");
 const winston = require("winston");
 
 class Logger {
- static instance = null;
+  static instance = null;
 
- constructor() {
+  constructor() {
     this.logger = winston.createLogger({
-        format: winston.format.simple(),
-        transports: [
-          new winston.transports.Console(),
-          new winston.transports.File({
-            filename: path.join(os.homedir(), ".aibutler", "service.log"),
-            maxSize: 1000000, // 1 MB
-            maxFiles: 1,
-          })
-        ]
+      format: winston.format.simple(),
+      transports: [
+        new winston.transports.Console(),
+        new winston.transports.File({
+          filename: path.join(os.homedir(), ".aibutler", "service.log"),
+          maxSize: 1000000, // 1 MB
+          maxFiles: 1,
+        }),
+      ],
     });
   }
 
- static getLogger() {
+  static getLogger() {
     if (this.instance === null) {
       this.instance = new this();
     }
@@ -28,16 +28,16 @@ class Logger {
 }
 
 function info(msg) {
-    console.log(msg);
-    Logger.getLogger().logger.info(msg);
+  console.log(msg);
+  Logger.getLogger().logger.info(msg);
 }
 
 function error(msg) {
-    console.log(msg);
-    Logger.getLogger().logger.error(msg);
+  console.log(msg);
+  Logger.getLogger().logger.error(msg);
 }
 
 module.exports = {
-    logInfo: info,
-    logErr: error
-}
+  logInfo: info,
+  logErr: error,
+};

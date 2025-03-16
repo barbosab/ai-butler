@@ -1,4 +1,9 @@
-const { create, count, insertMultiple, search: oramaSearch } = require("@orama/orama")
+const {
+  create,
+  count,
+  insertMultiple,
+  search: oramaSearch,
+} = require("@orama/orama");
 
 class VectorStore {
   static instance = null;
@@ -11,8 +16,8 @@ class VectorStore {
     if (this.instance === null) {
       const db = await create({
         schema: {
-          text: 'string',
-          embedding: 'vector[384]', // vector size must be expressed during schema initialization, all-MiniLM-L6-v2 is 384
+          text: "string",
+          embedding: "vector[384]", // vector size must be expressed during schema initialization, all-MiniLM-L6-v2 is 384
           // TODO: add meta data to schema
         },
       });
@@ -22,21 +27,21 @@ class VectorStore {
   }
 
   async addEmbeddings(embeddings) {
-    const items = embeddings.map(embedding => ({
+    const items = embeddings.map((embedding) => ({
       content: embedding.content,
       embedding: embedding.embedding,
       // ...meta data...
     }));
-  
+
     await insertMultiple(this.db, items);
   }
 
   async search(embedding, limit) {
     const searchResult = await oramaSearch(this.db, {
-      mode: 'vector',
+      mode: "vector",
       vector: {
         value: embedding,
-        property: 'embedding',
+        property: "embedding",
       },
       similarity: 0.1, // get as many results as possible
       limit: limit,

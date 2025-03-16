@@ -22,7 +22,7 @@ function splitText(text) {
     const sentenceRegex = /(?<!\w\.\w)(?<![A-Z][a-z]\.)(?<=[.!?])\s+(?=[A-Z])/g;
     return cleanedText.split(sentenceRegex);
   }
-  
+
   // there are no periods, so just split by chunks of 100 characters
   const chunkSize = 100;
   const chunks = [];

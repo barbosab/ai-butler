@@ -137,3 +137,7 @@ dist
 
 #don't ccmmit runners
 src/service/ollama/runners
+
+.webpack
+
+.DS_Store

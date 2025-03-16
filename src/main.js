@@ -33,7 +33,7 @@ const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(),
     new winston.transports.File({
-      filename: path.join(app.getPath("home"), ".chatd", "app.log"),
+      filename: path.join(app.getPath("home"), ".aibutler", "app.log"),
       maxSize: 1000000, // 1 MB
       maxFiles: 1,
     }),
@@ -46,16 +46,19 @@ if (require("electron-squirrel-startup")) {
 }
 
 const createWindow = () => {
+  // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    // backgroundColor: "#263238",
+
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
-    autoHideMenuBar: true,
   });
 
-  mainWindow.loadFile(path.join(__dirname, "index.html"));
+  // and load the index.html of the app.
+  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   if (!app.isPackaged) {
     global.debug = true;

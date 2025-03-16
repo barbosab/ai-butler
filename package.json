@@ -3,7 +3,7 @@
   "productName": "ai-butler",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -23,14 +23,27 @@
     "mammoth": "^1.6.0",
     "odt2html": "^1.0.1",
     "ollama": "^0.4.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "winston": "^3.11.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.1.1",
-    "@electron-forge/maker-deb": "^6.1.1",
-    "@electron-forge/maker-rpm": "^6.1.1",
-    "@electron-forge/maker-squirrel": "^6.1.1",
-    "@electron-forge/maker-zip": "^6.1.1",
-    "electron": "^24.1.1"
+    "@babel/core": "^7.26.10",
+    "@babel/preset-react": "^7.26.3",
+    "@electron-forge/cli": "^7.7.0",
+    "@electron-forge/maker-deb": "^7.7.0",
+    "@electron-forge/maker-rpm": "^7.7.0",
+    "@electron-forge/maker-squirrel": "^7.7.0",
+    "@electron-forge/maker-zip": "^7.7.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.7.0",
+    "@electron-forge/plugin-fuses": "^7.7.0",
+    "@electron-forge/plugin-webpack": "^7.7.0",
+    "babel-loader": "^10.0.0",
+    "@electron/fuses": "^1.8.0",
+    "@vercel/webpack-asset-relocator-loader": "1.7.3",
+    "css-loader": "^6.11.0",
+    "electron": "35.0.2",
+    "node-loader": "^2.1.0",
+    "style-loader": "^3.3.4"
   }
 }
